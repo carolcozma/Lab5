@@ -3,22 +3,22 @@
 
 typedef int Data;
 
-struct Node
+struct Node2
 {
     Data val;
-    struct Node* next;
+    struct Node2* next;
 };
 
-typedef struct Node Node;
+typedef struct Node2 Node2;
 
 struct Q
 {
-    struct Node *front,*rear;
+    struct Node2 *front,*rear;
 };
 
 typedef struct Q Queue;
 
-void deleteStack(Node**top);
+Queue* createQueue();
 void enQueue(Queue*q, Data v);
 Data deQueue(Queue*q);
 int isEmpty(Queue*q);

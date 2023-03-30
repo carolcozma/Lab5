@@ -1,33 +1,35 @@
+#include "cozi.h"
+#include "stive.h"
 Queue* createQueue(){
 	Queue *q;
 	q=(Queue *)malloc(sizeof(Queue));
-	if (q==NULL) return NULL;	
+	if (q==NULL) return NULL;
 	q->front=q->rear=NULL;
-	return q;	
+	return q;
 }
 
  void enQueue(Queue*q, Data v){
 	Node* newNode=(Node*)malloc(sizeof(Node));
 	newNode->val=v;
 	newNode->next=NULL;
-	if (q->rear==NULL) q->rear=newNode; 
+	if (q->rear==NULL) q->rear=newNode;
 	else{
 		(q->rear)->next=newNode;
 		(q->rear)=newNode;
 	}
-	if (q->front==NULL) q->front=q->rear; 
+	if (q->front==NULL) q->front=q->rear;
 }
- 
-Data deQueue(Queue*q) {  
+
+Data deQueue(Queue*q) {
 	Node* aux; Data d;
 	if (isEmpty(q)) return INT_MIN;
-	
-	aux=q->front; 
+
+	aux=q->front;
 	d=aux->val;
 	q->front=(q->front)->next;
 	free(aux);
-	return d;  	
-} 
+	return d;
+}
 
 int isEmpty(Queue*q){
 	return (q->front==NULL);
@@ -41,4 +43,15 @@ void deleteQueue(Queue*q){
 		free(aux);
 	}
 	free(q);
-}	
+}
+
+void inverse_queue(Queue *q)
+{
+    Node* stackTop=NULL;
+
+    while(!isEmpty(q))
+        push(&stackTop,deQueue(q));
+
+    while(!isEmptyStack(stackTop))
+        enQueue(q, pop(&stackTop));
+}

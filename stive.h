@@ -4,14 +4,14 @@
 struct Node
 {
     char val;
-    struct* Node next;
+    struct Node* next;
 };
 
 typedef struct Node Node;
 
-Data top(Node *top);
+char top(Node *top);
 void push(Node**top, char v);
 char pop(Node**top);
-int isEmpty(Node*top);
+int isEmptyStack(Node*top);
 void deleteStack(Node**top);
 
